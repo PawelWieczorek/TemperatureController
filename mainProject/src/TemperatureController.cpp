@@ -12,7 +12,7 @@ TemperatureController::TemperatureController(int (*getTemperature)(), int minTem
 
 	if (minTemp > maxTemp)
 	{
-		throw new std::invalid_argument("Minimum temperature must be lesser or equal maximum temperature!");
+		throw new std::invalid_argument("Minimum temperature must be less than or equal maximum temperature!");
 	}
 
 	this->getTemperature = getTemperature;
@@ -26,7 +26,7 @@ void TemperatureController::setMaxTemp(int maxTemp)
 {
 	if (maxTemp < this->minTemp)
 	{
-		throw new std::invalid_argument("Maximum temperature must be greater or equal minimum temperature!");
+		throw new std::invalid_argument("Maximum temperature must be greater than or equal minimum temperature!");
 	}
 
 	this->maxTemp = maxTemp;
@@ -36,7 +36,7 @@ void TemperatureController::setMinTemp(int minTemp)
 {
 	if (minTemp < this->maxTemp)
 	{
-		throw new std::invalid_argument("Minimum temperature must be lesser or equal maximum temperature!");
+		throw new std::invalid_argument("Minimum temperature must be less than or equal maximum temperature!");
 	}
 
 	this->minTemp = minTemp;
