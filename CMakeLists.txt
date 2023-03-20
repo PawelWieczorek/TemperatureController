@@ -7,3 +7,4 @@ project (TemperatureController
 	
 add_subdirectory(mainProject)
 add_subdirectory(Tests)
+add_subdirectory(googletest)
