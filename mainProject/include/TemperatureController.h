@@ -1,17 +1,19 @@
 #pragma once
 
+#include "TemperatureMeter.h"
+
 class TemperatureController
 {
 	int maxTemp;
 	int minTemp;
-	int (*getTemperature)() = nullptr;
+	TemperatureMeter* meter = nullptr;
 
 	bool cooling = false;
 	bool heating = false;
 
 public:
 
-	explicit TemperatureController(int (*getTemperature)(), int minTemp = 22, int maxTemp = 25);
+	explicit TemperatureController(TemperatureMeter* meter, int minTemp = 22, int maxTemp = 25);
 	virtual ~TemperatureController() = default;
 
 	void setMaxTemp(int maxTemp);

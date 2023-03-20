@@ -1,11 +1,11 @@
-#include "TemperatureController.hpp"
+#include "TemperatureController.h"
 #include <stdexcept>
 
 //Constructor
 
-TemperatureController::TemperatureController(int (*getTemperature)(), int minTemp, int maxTemp)
+TemperatureController::TemperatureController(TemperatureMeter* meter, int minTemp, int maxTemp)
 {
-	if (!getTemperature)
+	if (!meter)
 	{
 		throw new std::invalid_argument("Temperature measure handler cannot be NULL!");
 	}
@@ -15,7 +15,7 @@ TemperatureController::TemperatureController(int (*getTemperature)(), int minTem
 		throw new std::invalid_argument("Minimum temperature must be less than or equal maximum temperature!");
 	}
 
-	this->getTemperature = getTemperature;
+	this->meter = meter;
 	this->minTemp = minTemp;
 	this->maxTemp = maxTemp;
 }
@@ -74,7 +74,7 @@ bool TemperatureController::isHeating() const {
 
 void TemperatureController::control()
 {
-    int temp = this->getTemperature();
+    int temp = this->meter->measureTemperature();
 
     if (temp > this->maxTemp && !this->cooling)
     {
