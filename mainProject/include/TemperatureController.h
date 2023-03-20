@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include "TemperatureMeter.h"
 
 class TemperatureController
@@ -21,7 +22,7 @@ public:
 
     int getMaxTemp() const;
     int getMinTemp() const;
-    int getState() const;
+    std::string getState() const;
     bool isCooling() const;
     bool isHeating() const;
 

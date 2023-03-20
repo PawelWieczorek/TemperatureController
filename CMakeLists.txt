@@ -6,3 +6,4 @@ project (TemperatureController
 	DESCRIPTION "A Temperature Controller Project")
 	
 add_subdirectory(mainProject)
+add_subdirectory(Tests)

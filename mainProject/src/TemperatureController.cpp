@@ -44,14 +44,14 @@ void TemperatureController::setMinTemp(int minTemp)
 
 //Getters
 
-int TemperatureController::getState() const
+std::string TemperatureController::getState() const
 {
     if(this->cooling && this-> heating)
     {
         throw new std::invalid_argument("Cannot heat and cool in the same moment!");
     }
 
-    return this->heating ? 1 : this->cooling ? -1 : 0;
+    return this->heating ? "Heating" : this->cooling ? "Cooling" : "Idle";
 }
 
 int TemperatureController::getMaxTemp() const {
